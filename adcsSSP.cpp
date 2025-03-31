@@ -273,6 +273,12 @@ class StateMachine {
         return;//once done
     }
     void run_safe_mode() {
+        //one thing to note is that before entering this mode we will save the state memory
+        save_persistent_state();
+
+        //safe mode logic
+
+        
         if(fault_recovery_complete()){
             return;//return back to fault checking and state transition mechanisms
         }
