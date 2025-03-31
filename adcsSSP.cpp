@@ -5,6 +5,7 @@
 #include <array>
 //here i am assuming that we will be using freeRTOS(though i am not using multitasking features of RTOS)
 //and i am assuming that we are using ARM cortex series microprocessor(and not an arduino type processor, thus i am not using setup() and loop() functions typically found in arduino code) this is pure embedded c++ implementation.
+//Hardware Abstraction layer
 class NonVolatileMemory {
     public: struct ADCSState {
         ADCSMode current_mode;
