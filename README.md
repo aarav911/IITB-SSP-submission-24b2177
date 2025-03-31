@@ -74,7 +74,7 @@ The system implements a hierarchical reset strategy to ensure fault recovery:
 
 ## Code Structure
 
-The codebase is designed to be modular, object-oriented, and easy to extend:
+The codebase is designed to be modular, object-oriented, and easy to extend(start reading from the main()) :
 
 - **Core Components**:
   - `StateMachine.cpp`: Implements state transition logic.
