@@ -30,7 +30,7 @@ The ADCS operates in five distinct modes:
 |-----------------------|------------------------------------------------|----------------------------------------|------------------------------------------|
 | **DETUMBLING**        | Reduces angular velocity using magnetorquers.  | Initial state after reset.             | Angular velocity < 5°/s.                 |
 | **SUN_ACQUISITION**   | Aligns the satellite with the Sun.             | Stable rotation achieved.              | Sun vector within 2° tolerance.          |
-| **NOMINAL_POINTING**  | Maintains a stable pointing mode.              | Science operations initiated.          | Power < 20% or fault detected.           |
+| **NOMINAL_POINTING**  | Maintains a stable pointing mode.              | payoad operations initiated.          | Power < 20% or fault detected.           |
 | **SAFE_MODE**         | Reduces power consumption and ensures safety.  | Power or thermal limits exceeded.      | Normal parameters restored.              |
 | **FAULT_RECOVERY**    | Handles detected faults before resuming ops.   | Watchdog timeout or sensor anomalies.  | Subsystem checks passed.                 |
 
@@ -80,12 +80,16 @@ The codebase is designed to be modular, object-oriented, and easy to extend:
   - `StateMachine.cpp`: Implements state transition logic.
   - `FaultHandler.cpp`: Manages fault detection and recovery mechanisms.
 
-Key Functions
+### Key Functions
+- `void run_cycle();`  
+  Main control loop executed continuously (basically the `while(true)` in `main` runs it continuously, with a delay).
+- `void update_sensor_data();`  
+  Updates sensor readings.
+- `void check_state_transition();`  
+  Evaluates and transitions between states.
+- `void manage_faults();`  
+  Handles detected faults.
 
-void run_cycle(); // Main control loop executed continuously(basically the while(true) in main runs it continiously, with a delay)
-void update_sensor_data(); // Updates sensor readings
-void check_state_transition(); // Evaluates and transitions between states
-void manage_faults(); // Handles detected faults
 
 - **Design Patterns Used**:
   - Hardware Abstraction Layer (HAL) for sensor I/O operations.(NonVolatileMemory class)
@@ -150,6 +154,7 @@ This project is licensed under [MIT License](LICENSE).
 ## Acknowledgments
 
 Special thanks to [IIT Bombay Student Satellite Program](https://www.aero.iitb.ac.in/satlab/) for providing guidance and resources for this project.
+This README was formatted by Perplexity AI, but i did recheck it several times. 
 
 --- 
 
